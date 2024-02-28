@@ -64,12 +64,11 @@
             </div>
 
             <div class="col-12">
-              <font color="red"><label>Solar พาเลทละ 31 แผ่น ขนส่งเป็นพาเลทเท่านั้น โดยเลือกระหว่าง รถเฮี๊ยบกรณีลูกค้าไม่สามารถยกให้ได้ และรถเปลือยกรณีลูกค้าสามารถ
-              ยกลงให้ได้ ซึ่งราคาจะแตกต่างกัน</label></font>
+              <font color="red"><label>Solar พาเลทละ 31 แผ่น ขนส่งเป็นพาเลทเท่านั้น โดยเลือกระหว่าง
+                  รถเฮี๊ยบกรณีลูกค้าไม่สามารถยกให้ได้ และรถเปลือยกรณีลูกค้าสามารถ
+                  ยกลงให้ได้ ซึ่งราคาจะแตกต่างกัน</label></font>
             </div>
-            <font color="orange">
-              <marquee>[ Mainwarehouse Delivery Department // SIS Distribution Thailand PCL ]</marquee>
-            </font>
+
             <button type="submit" class="btn btn-primary">ประเมินค่าขนส่ง</button>
 
             </font>
@@ -111,7 +110,7 @@
   <script>
 
 
-    const scriptUrl = 'https://script.google.com/macros/s/AKfycbxM72kBdvUyjYKtBtzZhVuIepwaRe9_uu7zUdX2xEpJEZXSSvA4jABBjC2dbb9WrMc/exec'
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycbxWqhJkuwAf2DstFbfmvG3oGVghSiE1-ARUgmyF9BqkM4H9DOj9DhFtH-yIgQRf3p7O/exec'
     function submit() {
       let weightValue = $('#weight').val()
       $.LoadingOverlay('show');
@@ -133,34 +132,34 @@
           if (res.status == 'success') {
             $('#myForm')[0].reset();
             Swal.fire({
-              title: '<strong>Solar Cell ที่ต้องการประเมิน จำนวน   ' + weightValue + ' แผ่น </strong>',
+              title: '<strong>Solar Cell ที่ต้องการประเมิน จำนวน   ' + weightValue + ' พาเลท </strong>',
               html:
                 '<table class="table table-bordered">' +
                 '<thead>' +
                 '<tr>' +
                 '<th scope="col">บริษัทขนส่ง</th>' +
-                '<th scope="col">ค่าขนส่ง</th>' +
-                '<th scope="col">ระยะเวลาในการจัดส่ง</th>' +
+                '<th scope="col">รถเฮี๊ยบ</th>' +
+                '<th scope="col">รถคอกเปลือย</th>' +
                 '</tr>' +
                 '</thead>' +
                 '<tbody>' +
                 '<tr>' +
-                '<th>SiS (Share)</th>' +
+                '<th>มีนบุรีเครน (6 W)</th>' +
                 '<td>' + res.price1 + '</td>' +
                 '<td>' + res.period1 + '</td>' +
                 '</tr>' +
                 '<tr>' +
-                '<th>SiS (Direct)</th>' +
+                '<th>ปทุมทรานสปอร์ต (6 W)</th>' +
                 '<td>' + res.price2 + '</td>' +
                 '<td>' + res.period2 + '</td>' +
                 '</tr>' +
                 '<tr>' +
-                '<th>SCG Express</th>' +
+                '<th>มีนบุรีเครน (10 W)</th>' +
                 '<td>' + res.price3 + '</td>' +
                 '<td>' + res.period3 + '</td>' +
                 '</tr>' +
                 '<tr>' +
-                '<th>PORLOR</th>' +
+                '<th>ปทุมทรานสปอร์ต (10 W)</th>' +
                 '<td>' + res.price4 + '</td>' +
                 '<td>' + res.period4 + '</td>' +
                 '</tr>' +
