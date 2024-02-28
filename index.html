@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>เช็คค่าขนส่งธุรกิจ EM บริษัทเอสไอเอส</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+  <link rel="stylesheet"
+    href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+    integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
+    crossorigin="anonymous" />
+  <style>
+    body {
+      font-family: "Prompt", sans-serif
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="d-flex justify-content-center align-items-center vh-100">
+      <div class="col-md-7 col-lg-5 mx-auto text-center">
+        <h2 class="mx-3 ">
+          <font color="red">ประเมินค่าขนส่งธุรกิจ EM
+        </h2>
+        </font>
+        <form id="myForm" class="needs-validation" novalidate>
+          <div class="row g-3">
+            <div class="col-12">
+              <label>ตำบล</label>
+              <input class="form-control" type="text" placeholder="กรอกตำบล" id="district" required>
+            </div>
+
+            <div class="col-12">
+              <label>อำเภอ</label>
+              <input class="form-control" type="text" placeholder="กรอกอำเภอ" id="amphoe" required>
+            </div>
+
+            <div class="col-12">
+              <label>จังหวัด</label>
+              <input class="form-control" type="text" placeholder="กรอกจังหวัด" id="province" required>
+            </div>
+
+            <div class="col-12">
+              <label>รหัสไปรษณีย์</label>
+              <input class="form-control" type="text" placeholder="กรอกรหัสไปรษณีย์" id="zipcode" required>
+            </div>
+
+            <div class="col-12">
+              <label>จำนวนแผ่น Solar Cell</label>
+              <input class="form-control" type="text" placeholder="กรอกจำนวนแผ่นที่ต้องการจัดส่ง" id="weight" required>
+            </div>
+
+            <div class="col-12">
+              <font color="red"><label>*สำหรับเสาที่ยาวมากกว่า 4 เมตร คิดที่ 0.5 ของแผ่น solar cell เช่น เสา 4.2 เมตร
+                  จำนวน 6 แท่ง
+                  จะเท่ากับราคา 3 แผ่นของ solar cell </label></font>
+            </div>
+            <font color="orange">
+              <marquee>[ Mainwarehouse Delivery Department // SIS Distribution Thailand PCL ]</marquee>
+            </font>
+            <button type="submit" class="btn btn-primary">ประเมินค่าขนส่ง</button>
+
+            </font>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript"
+    src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
+  <script type="text/javascript"
+    src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
+  <link rel="stylesheet"
+    href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css">
+  <script type="text/javascript"
+    src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
+  <script>
+
+
+    $.Thailand({
+      $district: $('#district'),
+      $amphoe: $('#amphoe'),
+      $province: $('#province'),
+      $zipcode: $('#zipcode'),
+
+      onDataFill: function (data) {
+        console.log(data)
+        var html = '<b>ที่อยู่:</b> ตำบล' + data.district + ' อำเภอ' + data.amphoe + ' จังหวัด' + data.province + ' ' + data.zipcode;
+        $('#demo2-output').html('')
+
+      },
+
+      onLoad: function () {
+        console.info('Autocomplete is ready!');
+        $('#loader, .demo').toggle();
+      }
+    });
+  </script>
+  <script>
+
+
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycbx1zxO7SwCa7im0Ws34ntjltk7jfOFhM56F9xh4hi79pVqDKzTDkSJwyujafQB01Kr4/exec'
+    function submit() {
+      let weightValue = $('#weight').val()
+      $.LoadingOverlay('show');
+      let data = {
+        opt: 'savedata',
+        data1: $('#district').val(),
+        data2: $('#amphoe').val(),
+        data3: $('#province').val(),
+        data4: $('#zipcode').val(),
+        data5: $('#weight').val()
+      };
+      $.ajax({
+        method: "POST",
+        url: scriptUrl,
+        data: data,
+        dataType: 'json',
+        success: function (res) {
+          $.LoadingOverlay('hide');
+          if (res.status == 'success') {
+            $('#myForm')[0].reset();
+            Swal.fire({
+              title: '<strong>Solar Cell ที่ต้องการประเมิน จำนวน   ' + weightValue + ' แผ่น </strong>',
+              html:
+                '<table class="table table-bordered">' +
+                '<thead>' +
+                '<tr>' +
+                '<th scope="col">บริษัทขนส่ง</th>' +
+                '<th scope="col">ค่าขนส่ง</th>' +
+                '<th scope="col">ระยะเวลาในการจัดส่ง</th>' +
+                '</tr>' +
+                '</thead>' +
+                '<tbody>' +
+                '<tr>' +
+                '<th>SiS (Share)</th>' +
+                '<td>' + res.price1 + '</td>' +
+                '<td>' + res.period1 + '</td>' +
+                '</tr>' +
+                '<tr>' +
+                '<th>SiS (Direct)</th>' +
+                '<td>' + res.price2 + '</td>' +
+                '<td>' + res.period2 + '</td>' +
+                '</tr>' +
+                '<tr>' +
+                '<th>SCG Express</th>' +
+                '<td>' + res.price3 + '</td>' +
+                '<td>' + res.period3 + '</td>' +
+                '</tr>' +
+                '<tr>' +
+                '<th>PORLOR</th>' +
+                '<td>' + res.price4 + '</td>' +
+                '<td>' + res.period4 + '</td>' +
+                '</tr>' +
+                '</tbody>' +
+                '</table>',
+              showCloseButton: true,
+              focusConfirm: true,
+            })
+          }
+        },
+        error: function (err) {
+          console.log(err);
+          $.LoadingOverlay('hide');
+          alert('บันทึกไม่สำเร็จ');
+        },
+      });
+    }
+  </script>
+  <script>
+    (() => {
+      'use strict'
+      const forms = document.querySelectorAll('.needs-validation')
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          event.preventDefault()
+          if (!form.checkValidity()) {
+            event.stopPropagation()
+            form.classList.add('was-validated')
+            $('#myForm').find(":invalid").first().focus();
+          } else {
+            submit()
+          }
+
+        }, false)
+      })
+    })()
+  </script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
+</body>
+
+</html>
