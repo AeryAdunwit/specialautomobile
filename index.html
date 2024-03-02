@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>เช็คค่าขนส่งสำหรับ Solar Panel เป็นพาเลท</title>
+  <title>เช็คค่าขนส่งธุรกิจ EM บริษัทเอสไอเอส</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
     integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
     crossorigin="anonymous"></script>
@@ -21,62 +21,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
     integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
     crossorigin="anonymous" />
-  <style>
-    body {
-      font-family: "Prompt", sans-serif
-    }
-  </style>
-</head>
-
-<body>
-  <div class="container">
-    <div class="d-flex justify-content-center align-items-center vh-100">
-      <div class="col-md-7 col-lg-5 mx-auto text-center">
-        <h2 class="mx-3 ">
-          <font color="red">ประเมินค่าขนส่งรถเฮี๊ยบ รถใหญ่ สำหรับ Solar
-        </h2>
-        </font>
-        <form id="myForm" class="needs-validation" novalidate>
-          <div class="row g-3">
-            <div class="col-12">
-              <label>ตำบล</label>
-              <input class="form-control" type="text" placeholder="กรอกตำบล" id="district" required>
-            </div>
-
-            <div class="col-12">
-              <label>อำเภอ</label>
-              <input class="form-control" type="text" placeholder="กรอกอำเภอ" id="amphoe" required>
-            </div>
-
-            <div class="col-12">
-              <label>จังหวัด</label>
-              <input class="form-control" type="text" placeholder="กรอกจังหวัด" id="province" required>
-            </div>
-
-            <div class="col-12">
-              <label>รหัสไปรษณีย์</label>
-              <input class="form-control" type="text" placeholder="กรอกรหัสไปรษณีย์" id="zipcode" required>
-            </div>
-
-            <div class="col-12">
-              <label>จำนวนพาเลท Solar Cell</label>
-              <input class="form-control" type="number" placeholder="กรอกจำนวนพาเลทที่ต้องการจัดส่ง" id="weight" required>
-            </div>
-
-            <div class="col-12">
-              <font color="red"><label>Solar พาเลทละ 31 แผ่น ขนส่งเป็นพาเลทเท่านั้น โดยเลือกระหว่าง
-                  รถเฮี๊ยบกรณีลูกค้าไม่สามารถยกให้ได้ และรถเปลือยกรณีลูกค้าสามารถ
-                  ยกลงให้ได้ ซึ่งราคาจะแตกต่างกัน</label></font>
-            </div>
-
-            <button type="submit" class="btn btn-primary">ประเมินค่าขนส่ง</button>
-
-            </font>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
+  <link rel="stylesheet" href="style.css">
   <script type="text/javascript"
     src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/JQL.min.js"></script>
   <script type="text/javascript"
@@ -85,118 +30,7 @@
     href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css">
   <script type="text/javascript"
     src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
-  <script>
 
-
-    $.Thailand({
-      $district: $('#district'),
-      $amphoe: $('#amphoe'),
-      $province: $('#province'),
-      $zipcode: $('#zipcode'),
-
-      onDataFill: function (data) {
-        console.log(data)
-        var html = '<b>ที่อยู่:</b> ตำบล' + data.district + ' อำเภอ' + data.amphoe + ' จังหวัด' + data.province + ' ' + data.zipcode;
-        $('#demo2-output').html('')
-
-      },
-
-      onLoad: function () {
-        console.info('Autocomplete is ready!');
-        $('#loader, .demo').toggle();
-      }
-    });
-  </script>
-  <script>
-
-
-    const scriptUrl = 'https://script.google.com/macros/s/AKfycbxWqhJkuwAf2DstFbfmvG3oGVghSiE1-ARUgmyF9BqkM4H9DOj9DhFtH-yIgQRf3p7O/exec'
-    function submit() {
-      let weightValue = $('#weight').val()
-      $.LoadingOverlay('show');
-      let data = {
-        opt: 'savedata',
-        data1: $('#district').val(),
-        data2: $('#amphoe').val(),
-        data3: $('#province').val(),
-        data4: $('#zipcode').val(),
-        data5: $('#weight').val()
-      };
-      $.ajax({
-        method: "POST",
-        url: scriptUrl,
-        data: data,
-        dataType: 'json',
-        success: function (res) {
-          $.LoadingOverlay('hide');
-          if (res.status == 'success') {
-            $('#myForm')[0].reset();
-            Swal.fire({
-              title: '<strong>Solar Cell ที่ต้องการประเมิน จำนวน   ' + weightValue + ' พาเลท </strong>',
-              html:
-                '<table class="table table-bordered">' +
-                '<thead>' +
-                '<tr>' +
-                '<th scope="col">บริษัทขนส่ง</th>' +
-                '<th scope="col">รถเฮี๊ยบ</th>' +
-                '<th scope="col">รถคอกเปลือย</th>' +
-                '</tr>' +
-                '</thead>' +
-                '<tbody>' +
-                '<tr>' +
-                '<th>มีนบุรีเครน (6 W)</th>' +
-                '<td>' + res.price1 + '</td>' +
-                '<td>' + res.period1 + '</td>' +
-                '</tr>' +
-                '<tr>' +
-                '<th>ปทุมทรานสปอร์ต (6 W)</th>' +
-                '<td>' + res.price2 + '</td>' +
-                '<td>' + res.period2 + '</td>' +
-                '</tr>' +
-                '<tr>' +
-                '<th>มีนบุรีเครน (10 W)</th>' +
-                '<td>' + res.price3 + '</td>' +
-                '<td>' + res.period3 + '</td>' +
-                '</tr>' +
-                '<tr>' +
-                '<th>ปทุมทรานสปอร์ต (10 W)</th>' +
-                '<td>' + res.price4 + '</td>' +
-                '<td>' + res.period4 + '</td>' +
-                '</tr>' +
-                '</tbody>' +
-                '</table>',
-              showCloseButton: true,
-              focusConfirm: true,
-            })
-          }
-        },
-        error: function (err) {
-          console.log(err);
-          $.LoadingOverlay('hide');
-          alert('บันทึกไม่สำเร็จ');
-        },
-      });
-    }
-  </script>
-  <script>
-    (() => {
-      'use strict'
-      const forms = document.querySelectorAll('.needs-validation')
-      Array.from(forms).forEach(form => {
-        form.addEventListener('submit', event => {
-          event.preventDefault()
-          if (!form.checkValidity()) {
-            event.stopPropagation()
-            form.classList.add('was-validated')
-            $('#myForm').find(":invalid").first().focus();
-          } else {
-            submit()
-          }
-
-        }, false)
-      })
-    })()
-  </script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
@@ -204,6 +38,79 @@
   <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <script
     src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="d-flex justify-content-center align-items-center vh-100">
+      <div class="col-md-7 col-lg-5 mx-auto ">
+        <h2 class="mx-3 text-center">
+          <font color="red">ประเมินค่าขนส่ง Solar Lot On Pallet
+        </h2>
+        </font>
+        <form id="myForm" class="needs-validation" novalidate>
+          <div class="row g-3">
+            <div class="col-12 d-flex justify-content-center">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="radio" id="radio1"
+                  value="รถเฮี๊ยบ บริการยกลงจากรถให้ลูกค้า" required>
+                <label class="form-check-label" for="radio1">
+                  รถเฮี๊ยบ บริการยกลงจากรถให้ลูกค้า
+                </label>
+              </div>
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="radio" id="radio2"
+                  value="รถคอกเปลือย ลูกค้าสามารถยกลงให้" required>
+                <label class="form-check-label" for="radio2">
+                  รถคอกเปลือย ลูกค้าสามารถยกลงให้
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 text-center">
+            <label>ตำบล</label>
+            <input class="form-control" type="text" placeholder="กรอกตำบล" id="district" required>
+          </div>
+
+          <div class="col-12 text-center">
+            <label>อำเภอ</label>
+            <input class="form-control" type="text" placeholder="กรอกอำเภอ" id="amphoe" required>
+          </div>
+
+          <div class="col-12 text-center">
+            <label>จังหวัด</label>
+            <input class="form-control" type="text" placeholder="กรอกจังหวัด" id="province" required>
+          </div>
+
+          <div class="col-12 text-center">
+            <label>รหัสไปรษณีย์</label>
+            <input class="form-control" type="text" placeholder="กรอกรหัสไปรษณีย์" id="zipcode" required>
+          </div>
+
+          <div class="col-12 text-center">
+            <label>จำนวนพาเลท Solar Cell</label>
+            <input class="form-control" type="text" placeholder="กรอกจำนวนแผ่นที่ต้องการจัดส่ง" id="weight" required>
+          </div>
+
+          <div class="col-12 text-center">
+            <font color="red"><label>Solar Panel พาเลทละ 31 แผ่น ขนส่งเป็นพาเลทเท่านั้น โดยเลือกระหว่าง
+                รถเฮี๊ยบกรณีลูกค้าไม่สามารถยกให้ได้ และรถเปลือยกรณีลูกค้าสามารถยกลงให้ได้ ซึ่งราคาจะแตกต่างกัน</label>
+            </font>
+          </div>
+          <font color="orange">
+            <marquee>[ Mainwarehouse Delivery Department // SIS Distribution Thailand PCL ]</marquee>
+          </font>
+          <button type="submit" class="btn btn-primary w-100">ประเมินค่าขนส่ง</button>
+
+          </font>
+      </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 
 </html>
