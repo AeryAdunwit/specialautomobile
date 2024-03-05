@@ -19,7 +19,7 @@ $.Thailand({
   }
 })
 
-const scriptUrl = 'https://script.google.com/macros/s/AKfycbx9hlbGujS4IVCkaUN_aesxP1CyOPPoYUGUE7BaQr-3MO5WJvgAxgTa-4mNw5xv71k2/exec'
+const scriptUrl = 'https://script.google.com/macros/s/AKfycbyLslWayIv2jJwt04qqHAztE3NaKJxac8_JzyMMaL-HP4IKxVPwVcJfSPia6_aPJBp-/exec'
 
 function submit() {
   let district = $('#district').val()
